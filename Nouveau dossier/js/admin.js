@@ -1,5 +1,6 @@
 function ajouterProduit() {
-
+    console.log('sdfsd');
+    
     var produitAmodifier = localStorage.getItem('modifier-produis');
 
     var image = document.getElementById("img");
@@ -60,9 +61,9 @@ function addProduct(image) {
 
 function updateProduct(image) {
 
-    var produitAmodifier = JSON.parse(localStorage.getItem('modifier-produis'));
+    var produitAmodifier = JSON.parse(localStorage.getItem('modifier-produis')) || [];
 
-    var produits = JSON.parse(localStorage.getItem('liste-produits'));
+    var produits = JSON.parse(localStorage.getItem('liste-produits')) || [];
     for (i = 0; i < produits.length; i++) {
         if(produits[i].id == produitAmodifier.id) {
             produits[i].name = document.getElementById("name-produit").value;

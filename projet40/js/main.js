@@ -52,60 +52,45 @@ function validerpsw() {
 
 function register() {
     var stringlocale = localStorage.getItem('tabuser');
-    var tabuser = JSON.parse(stringlocale);
+    var tabuser = JSON.parse(stringlocale) || [];
 
 
+    // var nameisValid = verif()
+    // if (nameisValid = false)
+    //     alert("name is invalid")
+
+
+    // if (tabuser == null) {
+    //     tabuser = []
+    // }
+
+
+
+
+    // var emailisValid = validation();
+    // if (emailisValid == false) {
+    //     alert("email est invalid");
+    // }
+
+    // var pswisValid = validerpsw()
+    // if (pswisValid == false) {
+    //     alert("psw est invalid");
     var a = document.getElementById("nom").value;
     var b = document.getElementById("email").value;
     var c = document.getElementById("password").value;
-    var d = document.getElementById("pass").value;
-    var nameisValid = verif()
-    if (nameisValid = false)
-        alert("name is invalid")
 
-
-    if (tabuser == null) {
-        tabuser = []
+    var obj = {
+        id: Math.round(Math.random() * 1000 + 1),
+        nom: a,
+        email: b,
+        password: c,
     }
-
-
-
-
-    var emailisValid = validation();
-    if (emailisValid == false) {
-        alert("email est invalid");
-    }
-
-    var pswisValid = validerpsw()
-    if (pswisValid == false) {
-        alert("psw est invalid");
-    }
-
-
-    for (i = 0; i < tabuser.length; i++) {
-        console.log(tabuser.username == a);
-        console.log(a);
-        console.log(tabuser[i].username);
-
-        if (tabuser[i].username == a) {
-            alert('username existant');
-            return;
-        }
-
-        var obj = {
-
-            a: nom,
-            b: email,
-            c: password,
-        }
-        tabuser.push(obj)
-        var str = JSON.stringify(tabuser);
-        localStorage.setItem('tabuser', str);
-        console.log(str);
-
-
-        location.replace("../register/login.html");
-    }
+    tabuser.push(obj)
+    var str = JSON.stringify(tabuser);
+    localStorage.setItem('tabuser', str);
+    location.href='login.html'
+    console.log(str);
+    // }
 
 }
 
@@ -125,9 +110,9 @@ function sigin() {
     console.log('fds');
 
     for (i = 0; i < tab.length; i++) {
-        console.log(tab[i].username == user, tab[i].psw == psw);
+     
 
-        if (tab[i].username == user && tab[i].mdp == psw) {
+        if (tab[i].email == user && tab[i].password == psw) {
             console.log("ok");
             localStorage.setItem('connectedUser', JSON.stringify(tab[i]))
             location.href = "../register/index.html";
@@ -170,7 +155,7 @@ function AffichProd() {
                 <img class="img-fluid" src="${prod[i].image}" alt="">
                 <div class="p_icon">
                     <a href="#">
-                        <i class="fa fa-cart-arrow-down"></i>
+                        <i onclick='addPanier(${prod[i].id})' class="fa fa-cart-arrow-down"></i>
                     </a>
                     <a href="#">
                         <i class="fa fa-heart-o"></i>
@@ -194,34 +179,24 @@ function AffichProd() {
 
 
 
-// function Panier()
-// {
-//     this.liste = [];
-//     this.ajouterArticle = function(code, qte, prix)
-//     { 
-//         var index = this.getArticle(code);
-//         if (index == -1) this.liste.push(new LignePanier(code, qte, prix));
-//         else this.liste[index].ajouterQte(qte);
-//     }
-//     this.getPrixPanier = function()
-//     {
-//         var total = 0;
-//         for(var i = 0 ; i < this.liste.length ; i++)
-//             total += this.liste[i].getPrixLigne();
-//         return total;
-//     }
-//     this.getArticle = function(code)
-//     {
-//         for(var i = 0 ; i <this.liste.length ; i++)
-//             if (code == this.liste[i].getCode()) return i;
-//         return -1;
-//     }
-//     this.supprimerArticle = function(code)
-//     {
-//         var index = this.getArticle(code);
-//         if (index > -1) this.liste.splice(index, 1);
-//     }
-// }
+function addPanier(idProduit) {
+    let tabPanier = JSON.parse(localStorage.getItem('tabPanier')) || []
+
+
+    var connectedUser = JSON.parse(localStorage.getItem('connectedUser'))
+
+    var panier = {
+        id: Math.round(Math.random() * 1000 + 1),
+        idUser: connectedUser.id,
+        idProduit: idProduit,
+        qt : 1    
+    }
+
+    tabPanier.push(panier)
+
+    localStorage.setItem('tabPanier',JSON.stringify(tabPanier))
+
+}
 
 
 
