@@ -84,9 +84,11 @@ function initialisation() {
 
 function modifierProduit() {
 
-    var produitAModifier = JSON.parse(localStorage.getItem('modifier-produis'));
+    var produitAModifier = localStorage.getItem('modifier-produis');;
 
-    if(produitAModifier != null) {
+    if(produitAModifier != "") {
+        // En mode edit produit: produitAModifier = au produit selectionné
+        produitAModifier = JSON.parse(produitAModifier);
         console.log("produit = ", produitAModifier);
         document.getElementById("name-produit").value = produitAModifier.name;
         document.getElementById("description").value = produitAModifier.description;

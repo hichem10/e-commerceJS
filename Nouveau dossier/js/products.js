@@ -1,4 +1,5 @@
 function ajouterProduit() {
+    // en mode creation produit: modifier-produis = ""
     localStorage.setItem('modifier-produis', "");
     location.href = "./index.html";
 }
@@ -120,6 +121,7 @@ function editProduct(productId) {
 
     for (i = 0; i < produits.length; i++) {
         if(produits[i].id == productId) {
+            // En mode edit produit: modifier-produis = produit selectionné
             localStorage.setItem('modifier-produis', JSON.stringify(produits[i]));
             location.href = "./index.html";
         }
