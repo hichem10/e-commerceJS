@@ -157,7 +157,7 @@ function search() {
             li[i].style.display = "none";
         }
     }
-}
+} 
 
 
 function AffichProd() {
