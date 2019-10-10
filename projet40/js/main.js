@@ -172,6 +172,7 @@ function AffichProd() {
     }
 
     document.getElementById('Proc').innerHTML = html;
+    
 
 }
 
@@ -195,6 +196,8 @@ function addPanier(idProduit) {
     tabPanier.push(panier)
 
     localStorage.setItem('tabPanier',JSON.stringify(tabPanier))
+    
+
 
 }
 
