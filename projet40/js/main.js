@@ -88,7 +88,7 @@ function register() {
     tabuser.push(obj)
     var str = JSON.stringify(tabuser);
     localStorage.setItem('tabuser', str);
-    location.href='login.html'
+    location.href = 'login.html'
     console.log(str);
     // }
 
@@ -110,7 +110,7 @@ function sigin() {
     console.log('fds');
 
     for (i = 0; i < tab.length; i++) {
-     
+
 
         if (tab[i].email == user && tab[i].password == psw) {
             console.log("ok");
@@ -169,10 +169,13 @@ function AffichProd() {
         </div>
     </div>`
 
+
+
+
     }
 
     document.getElementById('Proc').innerHTML = html;
-    
+
 
 }
 
@@ -181,7 +184,7 @@ function AffichProd() {
 
 
 function addPanier(idProduit) {
-    let tabPanier = JSON.parse(localStorage.getItem('tabPanier')) || []
+    let tabPanier = JSON.parse(localStorage.getItem('tabPanier'))
 
 
     var connectedUser = JSON.parse(localStorage.getItem('connectedUser'))
@@ -190,17 +193,74 @@ function addPanier(idProduit) {
         id: Math.round(Math.random() * 1000 + 1),
         idUser: connectedUser.id,
         idProduit: idProduit,
-        qt : 1    
+        qt: 1
     }
 
     tabPanier.push(panier)
 
-    localStorage.setItem('tabPanier',JSON.stringify(tabPanier))
-    
+    localStorage.setItem('tabPanier', JSON.stringify(tabPanier))
+
 
 
 }
+function affPanier() {
+    var listPannier = JSON.parse(localStorage.getItem('tabPanier'))
+    var listProd = JSON.parse(localStorage.getItem('liste-produits'))
+    var connectedUser = JSON.parse(localStorage.getItem('connectedUser'))
+    var html = ``;
+    
 
+
+
+    for (let i = 0; i < listPannier.length; i++) {
+        if (listPannier[i].idUser == connectedUser.id) {
+            for (let j = 0; j < listProd.length; j++) {
+                if (listPannier[i].idProduit == listProd[j].id) {
+                    listPannier[i]['nomProduit'] = listProd[j].name
+                    listPannier[i]['prixProduit'] = listProd[j].prix
+                    listPannier[i]['imageProduit'] = listProd[j].image
+                }                
+            }
+            html += `<tr>
+
+            <td>
+                <img width='30' height='30' src='${listPannier[i]['imageProduit']}' >
+            </td>
+                <td>
+                    <div class="media">
+                        <div class="d-flex">
+                            <img src="img/product/single-product/cart-1.jpg" alt="">
+                        </div>
+                        <div class="media-body">
+                            <input value='${listPannier[i]['nomProduit']}'  type="text">
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <input value='${listPannier[i]['prixProduit']}' type="text">
+                </td>
+                <td>
+                    <div class="product_count">
+                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+                        <button class="increase items-count" type="button">
+                            <i class="lnr lnr-chevron-up"></i>
+                        </button>
+                        <button class="reduced items-count" type="button">
+                            <i class="lnr lnr-chevron-down"></i>
+                        </button>
+                    </div>
+                </td>
+                <td>
+					<input value='${listPannier[i]['prixProduit']}' type="text" >
+				</td>
+                
+            </tr>
+                `
+        }
+    }
+    document.getElementById('AffiProd').innerHTML = html
+
+}
 
 
 
