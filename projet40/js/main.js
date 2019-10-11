@@ -182,7 +182,7 @@ function AffichProd() {
 
 function addPanier(idProduit) {
     let tabPanier = JSON.parse(localStorage.getItem('tabPanier')) || []
-
+   
 
     var connectedUser = JSON.parse(localStorage.getItem('connectedUser'))
 
