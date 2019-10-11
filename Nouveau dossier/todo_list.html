@@ -23,6 +23,7 @@
   <link href="../Nouveau dossier/css/style-responsive.css" rel="stylesheet">
   <link rel="stylesheet" href="../Nouveau dossier/css/to-do.css">
 
+  <script  src="../Nouveau dossier/js/commande.js"></script>
   <!-- =======================================================
     Template Name: Dashio
     Template URL: https://templatemag.com/dashio-bootstrap-admin-template/
@@ -31,7 +32,7 @@
   ======================================================= -->
 </head>
 
-<body onload="afficheTache()">
+<body onload="affichepanier()">
   <section id="container">
     <!-- **********************************************************************************************************************************************************
         TOP BAR CONTENT & NOTIFICATIONS
@@ -123,33 +124,19 @@
                   <thead>
                       <tr>
                           <td>Id</td>
-                          <td>Nom de client</td>
-                          <td>Produit</td>
+                          <td>Id de client</td>
+                          <td>Id de Produit</td>
                           <td>Quantité</td>
-                          <td>Total</td>
+                          <td>Status</td>
+                          <td>Action</td>
+                          
                       </tr>
                   </thead>
       
-                <tbody id="commande"></tbody>
+                <tbody id="commande">
+                  
+                </tbody>
               </table> 
-            
-                <div class="pull-left">
-                  <button>
-                    <i class="btn btn-success btn-xs fa fa-check"></i>
-        
-                  </button>
-                 <button>
-                   <i class="far fa-times-circle"
-                   style= "padding: 1px 5px;
-                    font-size: 12px;
-                    line-height: 1.5;
-                    border-radius: 3px;
-                    color: #fff;
-                  background-color: #d9534f;
-                   border-color: #d43f3a"; ></i>   
-                 </button>
-                
-                </div>
 
                   <a href="../Nouveau dossier/contactform.html">  </a>
                   <a></a>
