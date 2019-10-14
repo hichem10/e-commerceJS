@@ -142,7 +142,7 @@ function search() {
             li[i].style.display = "none";
         }
     }
-} 
+}
 
 
 function AffichProd() {
@@ -185,7 +185,7 @@ function AffichProd() {
 
 function addPanier(idProduit) {
     let tabPanier = JSON.parse(localStorage.getItem('tabPanier')) || []
-   
+
 
     var connectedUser = JSON.parse(localStorage.getItem('connectedUser'))
 
@@ -208,7 +208,7 @@ function affPanier() {
     var listProd = JSON.parse(localStorage.getItem('liste-produits'))
     var connectedUser = JSON.parse(localStorage.getItem('connectedUser'))
     var html = ``;
-    
+
 
 
 
@@ -219,7 +219,7 @@ function affPanier() {
                     listPannier[i]['nomProduit'] = listProd[j].name
                     listPannier[i]['prixProduit'] = listProd[j].prix
                     listPannier[i]['imageProduit'] = listProd[j].image
-                }                
+                }
             }
             html += `<tr>
 
@@ -237,21 +237,15 @@ function affPanier() {
                     </div>
                 </td>
                 <td>
-                    <input value='${listPannier[i]['prixProduit']}' type="text">
+                    <input id='prix${i}' value='${listPannier[i]['prixProduit']}' type="text">
                 </td>
                 <td>
                     <div class="product_count">
-                        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-                        <button class="increase items-count" type="button">
-                            <i class="lnr lnr-chevron-up"></i>
-                        </button>
-                        <button class="reduced items-count" type="button">
-                            <i class="lnr lnr-chevron-down"></i>
-                        </button>
+                        <input onchange="total(${i})" type="number" name="qty" id="qty${i}" min="1" value="1" title="Quantity:" class="input-text qty">
                     </div>
                 </td>
                 <td>
-					<input value='${listPannier[i]['prixProduit']}' type="text" >
+					<input  id="tot${i}" value='${listPannier[i]['prixProduit']}' type="text" >
 				</td>
                 
             </tr>
@@ -262,7 +256,18 @@ function affPanier() {
 
 }
 
+function total(i) {
+    
+    var qty = document.getElementById(`qty${i}`).value;
+    var prix = document.getElementById(`prix${i}`).value;
 
+    document.getElementById(`tot${i}`).value = Number(qty) * Number(prix)
+
+    
+  
+
+
+}
 
 
 
