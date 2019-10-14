@@ -16,10 +16,10 @@ function affichepanier() {
     
     for (let j = 0; j < tabuser.length; j++) {
       if (tabPanier[i].idUser == tabuser[j].id) {
-        
-        tabPanier[i]['nomClient'] = tabuser[j].nom
 
+          tabPanier[i]['nomClient'] = tabuser[j].nom
 
+          
       }
     }
 
