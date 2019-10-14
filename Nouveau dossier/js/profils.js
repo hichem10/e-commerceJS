@@ -13,7 +13,6 @@ function afficherProfils() {
     for (var i = 0; i < profils.length; i++) {
         html += `<tr>
              <td>${profils[i].id}</td>
-             <td>${profils[i].username}</td>
              <td>${profils[i].nom}</td>
              <td>${profils[i].email}</td>
          </tr>`

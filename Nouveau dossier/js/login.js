@@ -101,9 +101,6 @@ function register() {
 
 function sigin() {
 
-
-
-
     var stringlocal = localStorage.getItem("tabuser");
     var tab = JSON.parse(stringlocal);
     if (tab == null) {
@@ -120,7 +117,7 @@ function sigin() {
         if (tab[i].email == user && tab[i].password == psw) {
             console.log("ok");
             localStorage.setItem('connectedUser', JSON.stringify(tab[i]))
-            location.href = "../register/index.html";
+            location.href = "./index.html";
 
         }
         else {
